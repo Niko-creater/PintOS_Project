@@ -228,7 +228,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
   struct list_elem * pos;
 
   // Sort the sleep list so we always only need to elimate the first element
-  list_sort(&sleep_list, compare_wake_time, NULL);   
+  // list_sort(&sleep_list, compare_wake_time, NULL);   
 
   struct list_elem * e = list_begin(&sleep_list); 
 
@@ -236,10 +236,13 @@ timer_interrupt (struct intr_frame *args UNUSED)
     struct list_elem *next = list_next(e);
     struct thread *tmp = list_entry(e, struct thread, sleep_elem);
 
-    if (tmp->wake_time < timer_ticks()) { // Check if each thread has reached its wake time.
+    if (tmp->wake_time <= timer_ticks()) { // Check if each thread has reached its wake time.
       list_remove(e); // Remove the awake thread from the sleep list 
       thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
+      // break;
     }
+    // list_remove(e); // Remove the awake thread from the sleep list 
+    // thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
 
 
     e = next;
