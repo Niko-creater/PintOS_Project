@@ -1,5 +1,5 @@
 FAIL
 Kernel panic in run: PANIC at ../../tests/threads/tests.c:95 in fail(): test failed
-Call stack: 0xc0027fee
+Call stack: 0xc002808e
 Translation of call stack:
-0xc0027fee: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002808e: debug_panic (.../../lib/kernel/debug.c:38)

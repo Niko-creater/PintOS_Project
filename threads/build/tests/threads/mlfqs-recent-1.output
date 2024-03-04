@@ -103,11 +103,11 @@ Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) After 180 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) end
 Execution of 'mlfqs-recent-1' complete.
-Timer: 19014 ticks
-Thread: 0 idle ticks, 19017 kernel ticks, 0 user ticks
-Console: 7085 characters output
+Timer: 19015 ticks
+Thread: 968 idle ticks, 18049 kernel ticks, 0 user ticks
+Console: 7087 characters output
 Keyboard: 0 keys pressed
-Powering off..========================================================================
+Powering off...========================================================================
                         Bochs x86 Emulator 2.6
             Built from SVN snapshot on September 2nd, 2012
                   Compiled on Feb 17 2015 at 16:28:11

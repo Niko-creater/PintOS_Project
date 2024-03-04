@@ -19,11 +19,11 @@ Executing 'mlfqs-block':
 (mlfqs-block) Block thread should have already acquired lock.
 (mlfqs-block) end
 Execution of 'mlfqs-block' complete.
-Timer: 3058 ticks
-Thread: 0 idle ticks, 3061 kernel ticks, 0 user ticks
-Console: 748 characters output
+Timer: 3061 ticks
+Thread: 492 idle ticks, 2571 kernel ticks, 0 user ticks
+Console: 750 characters output
 Keyboard: 0 keys pressed
-Powering off..========================================================================
+Powering off...========================================================================
                         Bochs x86 Emulator 2.6
             Built from SVN snapshot on September 2nd, 2012
                   Compiled on Feb 17 2015 at 16:28:11

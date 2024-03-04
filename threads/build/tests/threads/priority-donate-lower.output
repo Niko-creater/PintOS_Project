@@ -13,15 +13,17 @@ Executing 'priority-donate-lower':
 (priority-donate-lower) Main thread should have priority 41.  Actual priority: 31.
 (priority-donate-lower) Lowering base priority...
 (priority-donate-lower) Main thread should have priority 41.  Actual priority: 21.
-(priority-donate-lower) acquire must already have finished.
+(priority-donate-lower) (priority-donate-lower) acquire: got the lock
+(priority-donate-lower) acquire: done
+acquire must already have finished.
 (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
 (priority-donate-lower) end
 Execution of 'priority-donate-lower' complete.
-Timer: 72 ticks
-Thread: 0 idle ticks, 75 kernel ticks, 0 user ticks
-Console: 777 characters output
+Timer: 84 ticks
+Thread: 0 idle ticks, 86 kernel ticks, 0 user ticks
+Console: 861 characters output
 Keyboard: 0 keys pressed
-Powering off..========================================================================
+Powering off...========================================================================
                         Bochs x86 Emulator 2.6
             Built from SVN snapshot on September 2nd, 2012
                   Compiled on Feb 17 2015 at 16:28:11
