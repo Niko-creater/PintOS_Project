@@ -236,12 +236,11 @@ timer_interrupt (struct intr_frame *args UNUSED)
     struct list_elem *next = list_next(e);
     struct thread *tmp = list_entry(e, struct thread, sleep_elem);
 
-    if (tmp->wake_time >= timer_ticks()) { // Check if each thread has reached its wake time.
-      break;
+    if (tmp->wake_time < timer_ticks()) { // Check if each thread has reached its wake time.
+      list_remove(e); // Remove the awake thread from the sleep list 
+      thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
     }
 
-    list_remove(e); // Remove the awake thread from the sleep list 
-    thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
 
     e = next;
   }
