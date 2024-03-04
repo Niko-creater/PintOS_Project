@@ -13,26 +13,26 @@ Executing 'alarm-simultaneous':
 (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
 (alarm-simultaneous) Each thread sleeps 10 ticks each time.
 (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
-(alarm-simultaneous) iteration 0, thread 0: woke up after 11 ticks
+(alarm-simultaneous) iteration 0, thread 0: woke up after -1073520776 ticks
 (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
+(alarm-simultaneous) iteration 0, thread 2: woke up 4 ticks later
+(alarm-simultaneous) iteration 1, thread 0: woke up 4 ticks later
 (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
+(alarm-simultaneous) iteration 1, thread 2: woke up 4 ticks later
+(alarm-simultaneous) iteration 2, thread 0: woke up 4 ticks later
 (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
+(alarm-simultaneous) iteration 2, thread 2: woke up 4 ticks later
+(alarm-simultaneous) iteration 3, thread 0: woke up 4 ticks later
 (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
+(alarm-simultaneous) iteration 3, thread 2: woke up 4 ticks later
+(alarm-simultaneous) iteration 4, thread 0: woke up 4 ticks later
 (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
+(alarm-simultaneous) iteration 4, thread 2: woke up 6 ticks later
 (alarm-simultaneous) end
 Execution of 'alarm-simultaneous' complete.
-Timer: 409 ticks
-Thread: 249 idle ticks, 163 kernel ticks, 0 user ticks
-Console: 1612 characters output
+Timer: 415 ticks
+Thread: 251 idle ticks, 166 kernel ticks, 0 user ticks
+Console: 1617 characters output
 Keyboard: 0 keys pressed
 Powering off...========================================================================
                         Bochs x86 Emulator 2.6

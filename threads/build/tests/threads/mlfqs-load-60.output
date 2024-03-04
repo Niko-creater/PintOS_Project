@@ -11,7 +11,7 @@ Boot complete.
 Executing 'mlfqs-load-60':
 (mlfqs-load-60) begin
 (mlfqs-load-60) Starting 60 niced load threads...
-(mlfqs-load-60) Starting threads took 16 seconds.
+(mlfqs-load-60) Starting threads took 2 seconds.
 (mlfqs-load-60) After 0 seconds, load average=0.00.
 (mlfqs-load-60) After 2 seconds, load average=0.00.
 (mlfqs-load-60) After 4 seconds, load average=0.00.
@@ -105,8 +105,8 @@ Executing 'mlfqs-load-60':
 (mlfqs-load-60) end
 Execution of 'mlfqs-load-60' complete.
 Timer: 18838 ticks
-Thread: 5339 idle ticks, 13501 kernel ticks, 0 user ticks
-Console: 5299 characters output
+Thread: 12125 idle ticks, 6715 kernel ticks, 0 user ticks
+Console: 5298 characters output
 Keyboard: 0 keys pressed
 Powering off...========================================================================
                         Bochs x86 Emulator 2.6
