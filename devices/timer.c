@@ -50,8 +50,8 @@ timer_init (void)
 bool compare_wake_time(const struct list_elem *a,
                    const struct list_elem *b, void * aux)
 {
-    struct thread *ia = list_entry(a, struct thread, elem);
-    struct thread *ib = list_entry(b, struct thread, elem);
+    struct thread *ia = list_entry(a, struct thread, sleep_elem);
+    struct thread *ib = list_entry(b, struct thread, sleep_elem);
     return (ia->wake_time < ib->wake_time);
 }
 
@@ -130,8 +130,9 @@ timer_sleep (int64_t ticks)
   curr_thread->wake_time = timer_ticks() + ticks;  // Calculate and record the wake time of the current thread
   list_push_back(&sleep_list, &curr_thread->sleep_elem); // Add the current thread to the sleep list
 
+  list_sort(&sleep_list, compare_wake_time, NULL);
   thread_block(); // Transitions the running thread from the running state to the blocked state
-
+ 
   intr_set_level(old_level); // Enable the interrupt
 
 }
@@ -228,21 +229,21 @@ timer_interrupt (struct intr_frame *args UNUSED)
   struct list_elem * pos;
 
   // Sort the sleep list so we always only need to elimate the first element
-  // list_sort(&sleep_list, compare_wake_time, NULL);   
+    
 
   struct list_elem * e = list_begin(&sleep_list); 
+
+  // list_sort(&sleep_list, compare_wake_time, NULL);
 
   while (e != list_end(&sleep_list)) { // Loop the sleep list
     struct list_elem *next = list_next(e);
     struct thread *tmp = list_entry(e, struct thread, sleep_elem);
 
-    if (tmp->wake_time <= timer_ticks()) { // Check if each thread has reached its wake time.
-      list_remove(e); // Remove the awake thread from the sleep list 
-      thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
-      // break;
+    if (tmp->wake_time > timer_ticks()) { // Check if each thread has reached its wake time.
+      break;
     }
-    // list_remove(e); // Remove the awake thread from the sleep list 
-    // thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
+    list_remove(e); // Remove the awake thread from the sleep list 
+    thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
 
 
     e = next;
