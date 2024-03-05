@@ -31,8 +31,8 @@ static void busy_wait (int64_t loops);
 static void real_time_sleep (int64_t num, int32_t denom);
 static void real_time_delay (int64_t num, int32_t denom);
 
-/*Project1: Sleep list */
-struct list sleep_list; // Create the sleep list
+/* Project 1: Sleep list */
+struct list sleep_list; // Creates the sleep list
 
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
    and registers the corresponding interrupt. */
@@ -42,16 +42,16 @@ timer_init (void)
   pit_configure_channel (0, 2, TIMER_FREQ);
   intr_register_ext (0x20, timer_interrupt, "8254 Timer");
 
-  /*Project1: Initialize the sleep thread list*/
-  list_init(&sleep_list);
+  /* Project 1: Initialize the sleep thread list */
+  list_init (&sleep_list);
 }
 
 /* Helper function to compare the wake time*/
-bool compare_wake_time(const struct list_elem *a,
-                   const struct list_elem *b, void * aux)
+bool compare_wake_time (const struct list_elem *a,
+                   const struct list_elem *b, void *aux)
 {
-    struct thread *ia = list_entry(a, struct thread, sleep_elem);
-    struct thread *ib = list_entry(b, struct thread, sleep_elem);
+    struct thread *ia = list_entry (a, struct thread, sleep_elem);
+    struct thread *ib = list_entry (b, struct thread, sleep_elem);
     return (ia->wake_time < ib->wake_time);
 }
 
@@ -105,17 +105,16 @@ timer_elapsed (int64_t then)
 void
 timer_sleep (int64_t ticks) 
 {
-  /*Porject 1: Use "thread_block" and "thread_unblock" to avoid busy waiting*/
-
+  /* Project 1: Use "thread_block" and "thread_unblock" to avoid busy waiting */
 
   enum intr_level old_level = intr_disable ();  // Disable the interrupt
 
-  struct thread *curr_thread = thread_current();  // Read the current thread
-  curr_thread->wake_time = timer_ticks() + ticks;  // Calculate and record the wake time of the current thread
-  list_push_back(&sleep_list, &curr_thread->sleep_elem); // Add the current thread to the sleep list
+  struct thread *curr_thread = thread_current ();  // Read the current thread
+  curr_thread->wake_time = timer_ticks () + ticks;  // Calculate and record the wake time of the current thread
+  list_push_back (&sleep_list, &curr_thread->sleep_elem); // Add the current thread to the sleep list
 
-  list_sort(&sleep_list, compare_wake_time, NULL);
-  thread_block(); // Transitions the running thread from the running state to the blocked state
+  list_sort (&sleep_list, compare_wake_time, NULL);
+  thread_block (); // Transitions the running thread from the running state to the blocked state
  
   intr_set_level(old_level); // Enable the interrupt
 
@@ -201,31 +200,23 @@ timer_interrupt (struct intr_frame *args UNUSED)
 
   enum intr_level old_level = intr_disable ();
 
-  struct list_elem * pos;
+  struct list_elem *pos;
 
-  // Sort the sleep list so we always only need to elimate the first element
-    
+  // Iterate over the sorted list of sleeping threads until we find one that should be awake
+  struct list_elem *e = list_begin (&sleep_list); 
+  while (e != list_end (&sleep_list)) { // Loops over the sleep list
+    struct list_elem *next = list_next (e);
+    struct thread *tmp = list_entry (e, struct thread, sleep_elem);
 
-  struct list_elem * e = list_begin(&sleep_list); 
-
-  // list_sort(&sleep_list, compare_wake_time, NULL);
-
-  while (e != list_end(&sleep_list)) { // Loop the sleep list
-    struct list_elem *next = list_next(e);
-    struct thread *tmp = list_entry(e, struct thread, sleep_elem);
-
-    if (tmp->wake_time > timer_ticks()) { // Check if each thread has reached its wake time.
+    if (tmp->wake_time > timer_ticks ()) { // Checks if each thread has reached its wake time.
       break;
     }
-    list_remove(e); // Remove the awake thread from the sleep list 
-    thread_unblock(tmp); // Transitions the blocked thread from the running state to the ready state
-
+    list_remove (e); // Removes the awake thread from the sleep list 
+    thread_unblock (tmp); // Transitions the blocked thread from the running state to the ready state
 
     e = next;
   }
-
   intr_set_level(old_level);
-
 }
 
 
