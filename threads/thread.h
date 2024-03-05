@@ -93,9 +93,9 @@ struct thread
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
 
-    /*Project1: Wake time of each thread */
+    /* Project 1: Wake time of each thread */
     int64_t wake_time; // The variable used to store the wake time
-    struct list_elem sleep_elem; //The list_elem used to construct sleep list
+    struct list_elem sleep_elem; // The list_elem used to construct the sleep list
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
