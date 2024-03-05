@@ -102,22 +102,6 @@ timer_elapsed (int64_t then)
 
 /* Sleeps for approximately TICKS timer ticks.  Interrupts must
    be turned on. */
-
-/*
-If the DEBUGGING is set to 1, then function will roll back to original version(unmodified)
-*/
-#define DEBUGGING 0  
-#if DEBUGGING
-timer_sleep (int64_t ticks) 
-{
-  int64_t start = timer_ticks ();
-
-  ASSERT (intr_get_level () == INTR_ON);
-  while (timer_elapsed (start) < ticks) 
-    thread_yield ();
-}
-
-#else 
 void
 timer_sleep (int64_t ticks) 
 {
@@ -136,10 +120,8 @@ timer_sleep (int64_t ticks)
   intr_set_level(old_level); // Enable the interrupt
 
 }
-#endif
 
   
-
 /* Sleeps for approximately MS milliseconds.  Interrupts must be
    turned on. */
 void
@@ -211,13 +193,6 @@ timer_print_stats (void)
 }
 
 /* Timer interrupt handler. */
-#if DEBUGGING
-timer_interrupt (struct intr_frame *args UNUSED)
-{
-  ticks++;
-  thread_tick ();
-}
-#else
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
@@ -252,7 +227,6 @@ timer_interrupt (struct intr_frame *args UNUSED)
   intr_set_level(old_level);
 
 }
-#endif
 
 
 
