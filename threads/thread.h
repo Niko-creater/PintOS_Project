@@ -4,6 +4,7 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include "fpr_arith.h"
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -97,6 +98,10 @@ struct thread
     int64_t wake_time; // The variable used to store the wake time
     struct list_elem sleep_elem; // The list_elem used to construct the sleep list
 
+    /* Project 2 Advanced Scheduler: Add niceness and recent_cpu*/
+    int nice;
+    FPReal recent_cpu;
+
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
@@ -141,5 +146,19 @@ int thread_get_nice (void);
 void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
+
+/* Project 2 Advanced Scheduler: Helper Functions Definition */
+/*
+  calculate the priority according to recent_cpu and nice values and return the value clamped to a suitable range.
+*/
+int calculate_priority(struct thread * t);
+/*
+  Calculates recent cpu and returns the calculated value.
+*/
+FPReal calculate_recent_cpu(struct thread * t);
+/*
+  Calculates the load average and returns the calculated value.
+*/
+FPReal calculate_load_avg(void);
 
 #endif /* threads/thread.h */
