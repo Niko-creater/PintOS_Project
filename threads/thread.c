@@ -199,6 +199,7 @@ void thread_tick(void)
   /* Project 2 Advanced Scheduler: update load_avg, recent_cpu and priority */
   if (thread_mlfqs)
   {
+    enum intr_level old_level = intr_disable ();
     if (t != idle_thread)
       t->recent_cpu = FPR_INC(&(t->recent_cpu)); // We skip the calculation when idle_thread is running
 
@@ -215,6 +216,7 @@ void thread_tick(void)
       // Calculation For priority
       thread_foreach(&update_priority, NULL);
     }
+    intr_set_level(old_level);
   }
 
   /* Enforce preemption. */
@@ -447,6 +449,7 @@ void thread_set_priority(int new_priority)
     struct thread *first_thread = list_entry(first_pos, struct thread, elem);
 
     if (new_priority < first_thread->priority)
+      intr_set_level(old_level);
       thread_yield();
   }
   intr_set_level(old_level);
