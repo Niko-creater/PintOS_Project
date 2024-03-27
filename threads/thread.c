@@ -83,7 +83,7 @@ bool compare_priority(const struct list_elem *a,
   return (ia->priority > ib->priority);
 }
 
-/* Project 2 Advanced Scheduler: Helper Functions Implementation */
+/* Project 2 Priority Scheduler: Helper Functions Implementation */
 int calculate_priority(struct thread *t)
 {
   int tmp_priority = PRI_MAX - FPR_TO_INT(FPR_DIV_INT(t->recent_cpu, 4)) - t->nice * 2;
