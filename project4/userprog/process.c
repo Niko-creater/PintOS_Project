@@ -171,21 +171,21 @@ start_process(void *file_name_)
    does nothing. */
 int process_wait(tid_t child_tid UNUSED)
 {
-  /* Find the child's ID that the current thread waits for and sema down the child's semaphore */
   struct list *l = &thread_current()->childs;
   struct list_elem *child_elem_ptr;
   child_elem_ptr = list_begin(l);
   struct child *child_ptr = NULL;
+  // Loop the childs 
   while (child_elem_ptr != list_end(l)) 
   {
     child_ptr = list_entry(child_elem_ptr, struct child, child_elem); 
-    if (child_ptr->tid == child_tid)                                  
+    if (child_ptr->tid == child_tid) // Find the child that belong to the thread_current()                                 
     {
       if (!child_ptr->isrun) 
       {
         child_ptr->isrun = true;
         enum intr_level old_level = intr_disable();
-        thread_block();
+        thread_block(); // Block the parent thread when the child is not finished
         intr_set_level(old_level);
         break;
       }
