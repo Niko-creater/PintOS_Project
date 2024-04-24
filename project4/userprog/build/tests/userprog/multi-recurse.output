@@ -20,14 +20,16 @@ Extracting ustar archive from scratch device into file system...
 Putting 'multi-recurse' into the file system...
 Erasing ustar archive...
 Executing 'multi-recurse 15':
-load: multi-recurse 15: open failed
-multi-recurse 1: exit(-1)
+(multi-recurse) begin 15
+(multi-recurse) exec("multi-recurse 14")
+(multi-recurse) wait(exec("multi-recurse 14")) returned -1073742060: FAILED
+multi-recurse: exit(1)
 Execution of 'multi-recurse 15' complete.
-Timer: 351 ticks
-Thread: 0 idle ticks, 327 kernel ticks, 28 user ticks
-hda2 (filesys): 43 reads, 166 writes
+Timer: 429 ticks
+Thread: 0 idle ticks, 361 kernel ticks, 71 user ticks
+hda2 (filesys): 69 reads, 166 writes
 hda3 (scratch): 80 reads, 2 writes
-Console: 919 characters output
+Console: 1022 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -20,14 +20,19 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-single' into the file system...
 Erasing ustar archive...
 Executing 'args-single onearg':
-load: args-single onearg: open failed
-args-single one: exit(-1)
+(args) begin
+(args) argc = 2
+(args) argv[0] = 'args-single'
+(args) argv[1] = 'onearg'
+(args) argv[2] = null
+(args) end
+args-single: exit(0)
 Execution of 'args-single onearg' complete.
-Timer: 345 ticks
-Thread: 0 idle ticks, 320 kernel ticks, 28 user ticks
-hda2 (filesys): 43 reads, 150 writes
+Timer: 422 ticks
+Thread: 0 idle ticks, 355 kernel ticks, 71 user ticks
+hda2 (filesys): 63 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
-Console: 925 characters output
+Console: 1001 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

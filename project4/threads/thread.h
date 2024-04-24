@@ -30,7 +30,6 @@ struct child
    tid_t tid;                   /* tid of the thread */
    bool isrun;                  /* whether the child's thread is run successfully */
    struct list_elem child_elem; /* list of children */
-   int store_exit;              /* the exit status of child thread */
 };
 
 /* A kernel thread or user process.
@@ -112,8 +111,7 @@ struct thread
 
    /* Structure for Task2 */
    struct list childs;         /* The list of childs */
-   struct child *thread_child; /* Store the child of this thread */
-   int st_exit;                /* Exit status */
+   int exit_status;                /* Exit status */
    bool success;               /* Judge whehter the child's thread execute successfully */
    struct thread *parent;      /* Parent thread of the thread */
 };

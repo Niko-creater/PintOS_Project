@@ -27,8 +27,8 @@ Executing 'read-zero':
 (read-zero) read() returned 134524118 instead of 0: FAILED
 read-zero: exit(1)
 Execution of 'read-zero' complete.
-Timer: 454 ticks
-Thread: 0 idle ticks, 396 kernel ticks, 62 user ticks
+Timer: 453 ticks
+Thread: 0 idle ticks, 394 kernel ticks, 63 user ticks
 hda2 (filesys): 88 reads, 158 writes
 hda3 (scratch): 75 reads, 2 writes
 Console: 1001 characters output

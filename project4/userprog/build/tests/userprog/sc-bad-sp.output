@@ -22,18 +22,18 @@ Erasing ustar archive...
 Executing 'sc-bad-sp':
 (sc-bad-sp) begin
 Page fault at 0x404809a: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002e04f
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002e05a
  cr2=0404809a error=00000000
  eax=0404809a ebx=00000000 ecx=00000003 edx=000000ad
- esi=00000000 edi=00000000 esp=00000020 ebp=c010cf64
+ esi=00000000 edi=00000000 esp=00000020 ebp=c010bf64
  cs=0008 ds=0010 es=0010 ss=0020
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc002a213 0xc002df0f 0xc002e00d 0xc0021eda 0xc0022137 0xc002e04f 0xc0021eda 0xc0022137 0x80480a1 0x80480dd 0x80487d3.
+Call stack: 0xc002a1e5 0xc002df1a 0xc002e018 0xc0021eac 0xc0022109 0xc002e05a 0xc0021eac 0xc0022109 0x80480a1 0x80480dd 0x80487d3.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 396 ticks
-Thread: 0 idle ticks, 296 kernel ticks, 100 user ticks
+Timer: 393 ticks
+Thread: 0 idle ticks, 293 kernel ticks, 100 user ticks
 hda2 (filesys): 61 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
 Console: 1504 characters output

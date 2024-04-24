@@ -23,8 +23,8 @@ Executing 'sc-boundary-2':
 (sc-boundary-2) begin
 sc-boundary-2: exit(67)
 Execution of 'sc-boundary-2' complete.
-Timer: 420 ticks
-Thread: 0 idle ticks, 368 kernel ticks, 56 user ticks
+Timer: 416 ticks
+Thread: 0 idle ticks, 364 kernel ticks, 56 user ticks
 hda2 (filesys): 63 reads, 156 writes
 hda3 (scratch): 75 reads, 2 writes
 Console: 892 characters output

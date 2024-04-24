@@ -28,8 +28,8 @@ Executing 'rox-multichild':
 (rox-multichild) read "child-rox": FAILED
 rox-multichild: exit(1)
 Execution of 'rox-multichild' complete.
-Timer: 522 ticks
-Thread: 0 idle ticks, 459 kernel ticks, 67 user ticks
+Timer: 518 ticks
+Thread: 0 idle ticks, 455 kernel ticks, 67 user ticks
 hda2 (filesys): 88 reads, 316 writes
 hda3 (scratch): 154 reads, 2 writes
 Console: 1053 characters output

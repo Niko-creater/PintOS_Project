@@ -26,10 +26,12 @@ void syscall_init(void)
   intr_register_int(0x30, 3, INTR_ON, syscall_handler, "syscall");
 }
 
+/* Project 4 System call handler */
+
 static void
 syscall_handler(struct intr_frame *f UNUSED)
 {
-  int type = *(int *)f->esp; 
+  int type = *(int *)f->esp; // Read the system call number
   if (type <= 0 || type >= max_syscall)
   {
     thread_exit();
@@ -37,10 +39,12 @@ syscall_handler(struct intr_frame *f UNUSED)
 
   switch (type)
   {
-  case SYS_EXIT:
+  // If the system call number is SYS_EXIT, do sys_exit
+  case SYS_EXIT: 
     sys_exit(f);
     break;
 
+  // If the system call number is SYS_WRITE, do sys_write
   case SYS_WRITE:
     sys_write(f);
     break;
@@ -50,24 +54,21 @@ syscall_handler(struct intr_frame *f UNUSED)
   }
 }
 
-/* Do sytem exit */
 void sys_exit(struct intr_frame *f)
 {
   uint32_t *user_ptr = f->esp;
-  user_ptr++;              
-  /* record the exit status of the process */
-  thread_current()->st_exit = *user_ptr;
+  user_ptr++; // Skip the system call number          
+  thread_current()->exit_status = *user_ptr; // Read the exit status
   thread_exit();
 }
 
-/* Do system write, Do writing in stdout and write in files */
 void sys_write(struct intr_frame *f)
 {
   uint32_t *user_ptr = f->esp;
-  user_ptr++;
-  const char *buffer = (const char *)*(user_ptr + 1);
-  off_t size = *(user_ptr + 2);
+  user_ptr++; // Skip the system call number
+  const char *buffer = (const char *)*(user_ptr + 1); // Read the buffer from second arg
+  off_t size = *(user_ptr + 2); // Read the size from third arg
 
-  putbuf(buffer, size);
+  putbuf(buffer, size); // print to stdout
   f->eax = size; // return number written
 }

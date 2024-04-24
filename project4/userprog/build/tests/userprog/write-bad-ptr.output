@@ -25,18 +25,18 @@ Executing 'write-bad-ptr':
 (write-bad-ptr) begin
 (write-bad-ptr) open "sample.txt"
 Page fault at 0x10123420: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002c772
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002c744
  cr2=10123420 error=00000000
  eax=10123420 ebx=00000000 ecx=0000007b edx=10123421
- esi=00000000 edi=00000000 esp=0000000a ebp=c010cf04
- cs=0008 ds=0010 es=0010 ss=cee0
+ esi=00000000 edi=00000000 esp=0000000a ebp=c010bf04
+ cs=0008 ds=0010 es=0010 ss=bee0
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc002a213 0xc002df0f 0xc002e00d 0xc0021eda 0xc0022137 0xc002c772 0xc002e0ef 0xc002e08c 0xc0021eda 0xc0022137 0x804a95e 0x80480e2 0x804811e 0x8048814.
+Call stack: 0xc002a1e5 0xc002df1a 0xc002e018 0xc0021eac 0xc0022109 0xc002c744 0xc002e0fa 0xc002e097 0xc0021eac 0xc0022109 0x804a95e 0x80480e2 0x804811e 0x8048814.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 441 ticks
-Thread: 0 idle ticks, 335 kernel ticks, 106 user ticks
+Timer: 439 ticks
+Thread: 0 idle ticks, 333 kernel ticks, 106 user ticks
 hda2 (filesys): 88 reads, 156 writes
 hda3 (scratch): 74 reads, 2 writes
 Console: 1632 characters output

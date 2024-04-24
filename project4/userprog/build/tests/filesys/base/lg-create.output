@@ -27,8 +27,8 @@ Executing 'lg-create':
 (lg-create) read of 512 bytes at offset 0 in "blargle" returned 134524456: FAILED
 lg-create: exit(1)
 Execution of 'lg-create' complete.
-Timer: 609 ticks
-Thread: 0 idle ticks, 439 kernel ticks, 173 user ticks
+Timer: 607 ticks
+Thread: 0 idle ticks, 436 kernel ticks, 174 user ticks
 hda2 (filesys): 63 reads, 156 writes
 hda3 (scratch): 75 reads, 2 writes
 Console: 1093 characters output

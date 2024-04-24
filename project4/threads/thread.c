@@ -181,13 +181,11 @@ tid_t thread_create(const char *name, int priority,
 
   /* Project 4 */
   /* Initialize for the thread's child */
-  t->thread_child = malloc(sizeof(struct child));
-  t->thread_child->tid = tid;
-  list_push_back(&thread_current()->childs, &t->thread_child->child_elem);
-  /* Initialize the  exit status by the MAX
-      Fix Bug */
-  t->thread_child->store_exit = UINT32_MAX;
-  t->thread_child->isrun = false;
+  struct child *tmp_child = malloc(sizeof(struct child));
+  tmp_child->tid = tid;
+  tmp_child->isrun = false;
+  list_push_back(&thread_current()->childs, &tmp_child->child_elem);
+  
 
   /* Prepare thread for first run by initializing its stack.
      Do this atomically so intermediate values for the 'stack'
@@ -300,10 +298,8 @@ void thread_exit(void)
      when it calls thread_schedule_tail(). */
   intr_disable();
   /*Print the information */
-  printf("%s: exit(%d)\n", thread_name(), thread_current()->st_exit);
+  printf("%s: exit(%d)\n", thread_name(), thread_current()->exit_status);
 
-  thread_current()->thread_child->store_exit = thread_current()->st_exit;
-  // sema_up(&thread_current()->thread_child->sema);
   thread_unblock(thread_current()->parent);
 
   list_remove(&thread_current()->allelem);
@@ -477,9 +473,8 @@ init_thread(struct thread *t, const char *name, int priority)
     t->parent = thread_current();
 
   list_init(&t->childs);
-  t->success = true;
-  /* Initialize exit status to MAX */
-  t->st_exit = UINT32_MAX;
+  t->success = false;
+  t->exit_status = 1;
 
   list_push_back(&all_list, &t->allelem);
 }

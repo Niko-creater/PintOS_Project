@@ -20,14 +20,22 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-multiple' into the file system...
 Erasing ustar archive...
 Executing 'args-multiple some arguments for you!':
-load: args-multiple some arguments for you!: open failed
-args-multiple s: exit(-1)
+(args) begin
+(args) argc = 5
+(args) argv[0] = 'args-multiple'
+(args) argv[1] = 'some'
+(args) argv[2] = 'arguments'
+(args) argv[3] = 'for'
+(args) argv[4] = 'you!'
+(args) argv[5] = null
+(args) end
+args-multiple: exit(0)
 Execution of 'args-multiple some arguments for you!' complete.
-Timer: 352 ticks
-Thread: 0 idle ticks, 326 kernel ticks, 30 user ticks
-hda2 (filesys): 43 reads, 150 writes
+Timer: 438 ticks
+Thread: 0 idle ticks, 359 kernel ticks, 83 user ticks
+hda2 (filesys): 63 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
-Console: 1003 characters output
+Console: 1138 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

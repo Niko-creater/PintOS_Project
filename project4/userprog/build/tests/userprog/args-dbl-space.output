@@ -20,14 +20,20 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-dbl-space' into the file system...
 Erasing ustar archive...
 Executing 'args-dbl-space two  spaces!':
-load: args-dbl-space two  spaces!: open failed
-args-dbl-space : exit(-1)
+(args) begin
+(args) argc = 3
+(args) argv[0] = 'args-dbl-space'
+(args) argv[1] = 'two'
+(args) argv[2] = 'spaces!'
+(args) argv[3] = null
+(args) end
+args-dbl-space: exit(0)
 Execution of 'args-dbl-space two  spaces!' complete.
-Timer: 351 ticks
-Thread: 0 idle ticks, 324 kernel ticks, 30 user ticks
-hda2 (filesys): 43 reads, 150 writes
+Timer: 434 ticks
+Thread: 0 idle ticks, 361 kernel ticks, 77 user ticks
+hda2 (filesys): 63 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
-Console: 964 characters output
+Console: 1061 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

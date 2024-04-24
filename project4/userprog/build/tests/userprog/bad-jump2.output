@@ -28,13 +28,13 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0000000
  eax=c0000000 ebx=00000000 ecx=00000003 edx=000000ad
  esi=00000000 edi=00000000 esp=bfffff7c ebp=bfffff98
  cs=001b ds=0023 es=0023 ss=0023
-bad-jump2: exit(-1)
+bad-jump2: exit(1)
 Execution of 'bad-jump2' complete.
-Timer: 461 ticks
-Thread: 0 idle ticks, 355 kernel ticks, 110 user ticks
+Timer: 458 ticks
+Thread: 0 idle ticks, 352 kernel ticks, 110 user ticks
 hda2 (filesys): 63 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
-Console: 1243 characters output
+Console: 1242 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

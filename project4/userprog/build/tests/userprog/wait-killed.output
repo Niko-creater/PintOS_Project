@@ -27,8 +27,8 @@ Executing 'wait-killed':
 (wait-killed) end
 wait-killed: exit(0)
 Execution of 'wait-killed' complete.
-Timer: 507 ticks
-Thread: 0 idle ticks, 450 kernel ticks, 60 user ticks
+Timer: 503 ticks
+Thread: 0 idle ticks, 446 kernel ticks, 60 user ticks
 hda2 (filesys): 86 reads, 294 writes
 hda3 (scratch): 143 reads, 2 writes
 Console: 982 characters output

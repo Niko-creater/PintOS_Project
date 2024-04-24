@@ -27,8 +27,8 @@ Executing 'read-boundary':
 (read-boundary) read() returned 134524334 instead of 239: FAILED
 read-boundary: exit(1)
 Execution of 'read-boundary' complete.
-Timer: 477 ticks
-Thread: 0 idle ticks, 408 kernel ticks, 73 user ticks
+Timer: 473 ticks
+Thread: 0 idle ticks, 404 kernel ticks, 73 user ticks
 hda2 (filesys): 89 reads, 164 writes
 hda3 (scratch): 78 reads, 2 writes
 Console: 1035 characters output
