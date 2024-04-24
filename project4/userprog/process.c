@@ -69,9 +69,6 @@ tid_t process_execute(const char *file_name)
   thread_block();
   intr_set_level(old_level);
 
-  if (!thread_current()->success)
-    return TID_ERROR; // can't create new process thread,return error
-
   return tid;
 }
 
@@ -83,7 +80,8 @@ start_process(void *file_name_)
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-
+  /* Project4 Argument passing */
+  // Get the command name
   char *fn_copy = malloc(strlen(file_name) + 1);
   strlcpy(fn_copy, file_name, strlen(file_name) + 1);
 
@@ -93,6 +91,7 @@ start_process(void *file_name_)
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
 
+  /* Project4 Argument passing */
   /*load executable. */
   char *token, *save_ptr;
   file_name = strtok_r(file_name, " ", &save_ptr);
@@ -101,54 +100,59 @@ start_process(void *file_name_)
   if (success)
   {
     /* Project4 Argument passing */
-    // Count the number of parameters
+    // Count the number of arguments
     int argc = 0;
-    // The number of parameters are limited to 100 */
+    // The number of arguments are limited to 100 */
     int argv[100];
+
     /* Parse command-line arguments,
     reverse each argument and push it onto the stack,
     and adjust the stack pointer esp.
-    The argv array stores the address of each argument on the stack."*/
+    The argv array stores the address of each argument on the stack. */
     for (token = strtok_r(fn_copy, " ", &save_ptr); token != NULL; token = strtok_r(NULL, " ", &save_ptr))
     {
-      if_.esp -= (strlen(token) + 1);
-      memcpy(if_.esp, token, strlen(token) + 1);
-      argv[argc++] = (int)if_.esp;
+      argv[argc++] = token;
+    }
+    int i;
+    for (i = argc - 1; i >= 0; i--)
+    {
+      if_.esp -= (strlen(argv[i]) + 1);
+      memcpy(if_.esp, argv[i], strlen(argv[i]) + 1);
+      argv[i] = if_.esp;
     }
 
     // Push word align
     if_.esp -= 4;
     *(int *)if_.esp = 0;
-    int i;
+
     // Push the address of all arguments
-    for (i = argc - 1; i >= 0; i--)
+    for (i = argc; i >= 0; i--)
     {
       if_.esp -= 4;
       *(int *)if_.esp = argv[i];
     }
-    // Push the argv[0]
+    // Push the address of argv
     if_.esp -= 4;
-    *(int *)if_.esp = (int)if_.esp + 4; 
+    *(int *)if_.esp = (int)if_.esp + 4;
+
     // Push the argc
     if_.esp -= 4;
     *(int *)if_.esp = argc;
     // return address
     if_.esp -= 4;
     *(int *)if_.esp = 0;
-
-    // Record the exec_status of the parent thread's success
-    thread_current()->parent->success = true;
-    // Unblock the parent thread
-    thread_unblock(thread_current()->parent);
   }
   // Free file_name whether successed or failed.
   palloc_free_page(file_name);
   free(fn_copy);
   if (!success)
   {
-    thread_current()->parent->success = false;
     thread_exit();
   }
+
+  /* Project4 Process wait */
+  // Unblock the parent thread
+  thread_unblock(thread_current()->parent);
 
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -169,19 +173,21 @@ start_process(void *file_name_)
 
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
+
+/* Project4 Process wait */
 int process_wait(tid_t child_tid UNUSED)
 {
-  struct list *l = &thread_current()->childs;
+  struct list *l = &thread_current()->children;
   struct list_elem *child_elem_ptr;
   child_elem_ptr = list_begin(l);
   struct child *child_ptr = NULL;
-  // Loop the childs 
-  while (child_elem_ptr != list_end(l)) 
+  // Loop the childs of running thread
+  while (child_elem_ptr != list_end(l))
   {
-    child_ptr = list_entry(child_elem_ptr, struct child, child_elem); 
-    if (child_ptr->tid == child_tid) // Find the child that belong to the thread_current()                                 
+    child_ptr = list_entry(child_elem_ptr, struct child, child_elem);
+    if (child_ptr->tid == child_tid) // Find the child that belong to the running thread
     {
-      if (!child_ptr->isrun) 
+      if (!child_ptr->isrun)
       {
         child_ptr->isrun = true;
         enum intr_level old_level = intr_disable();
@@ -189,20 +195,20 @@ int process_wait(tid_t child_tid UNUSED)
         intr_set_level(old_level);
         break;
       }
-      else 
+      else
       {
-        return -1;
+        return -1; // process_wait() has already been successfully called for the given thread
       }
     }
     child_elem_ptr = list_next(child_elem_ptr);
   }
   if (child_elem_ptr == list_end(l))
-  { 
-    return -1;
+  {
+    return -1; // thread not a child of the calling process
   }
-  
-  list_remove(child_elem_ptr);  
-  return 0; 
+
+  list_remove(child_elem_ptr); // Remove the child because it's finished.
+  return child_ptr->store_exit; // Return the child thread's exit status
 }
 
 /* Free the current process's resources. */
@@ -541,7 +547,7 @@ setup_stack(void **esp)
   {
     success = install_page(((uint8_t *)PHYS_BASE) - PGSIZE, kpage, true);
     if (success)
-      *esp = PHYS_BASE - 12;
+      *esp = PHYS_BASE;
     else
       palloc_free_page(kpage);
   }

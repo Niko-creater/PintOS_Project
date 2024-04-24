@@ -31,8 +31,8 @@ Executing 'write-boundary':
 (write-boundary) end
 write-boundary: exit(0)
 Execution of 'write-boundary' complete.
-Timer: 508 ticks
-Thread: 0 idle ticks, 406 kernel ticks, 106 user ticks
+Timer: 511 ticks
+Thread: 0 idle ticks, 410 kernel ticks, 105 user ticks
 hda2 (filesys): 88 reads, 162 writes
 hda3 (scratch): 77 reads, 2 writes
 Console: 1238 characters output

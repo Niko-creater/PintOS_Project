@@ -25,8 +25,8 @@ Executing 'multi-recurse 15':
 (multi-recurse) wait(exec("multi-recurse 14")) returned -1073742060: FAILED
 multi-recurse: exit(1)
 Execution of 'multi-recurse 15' complete.
-Timer: 429 ticks
-Thread: 0 idle ticks, 361 kernel ticks, 71 user ticks
+Timer: 427 ticks
+Thread: 0 idle ticks, 365 kernel ticks, 66 user ticks
 hda2 (filesys): 69 reads, 166 writes
 hda3 (scratch): 80 reads, 2 writes
 Console: 1022 characters output

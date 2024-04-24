@@ -179,12 +179,12 @@ tid_t thread_create(const char *name, int priority,
   init_thread(t, name, priority);
   tid = t->tid = allocate_tid();
 
-  /* Project 4 */
+  /* Project 4 Process wait */
   /* Initialize for the thread's child */
-  struct child *tmp_child = malloc(sizeof(struct child));
-  tmp_child->tid = tid;
-  tmp_child->isrun = false;
-  list_push_back(&thread_current()->childs, &tmp_child->child_elem);
+  t->thread_child = malloc(sizeof(struct child));
+  t->thread_child->tid = tid;
+  t->thread_child->isrun = false;
+  list_push_back(&thread_current()->children, &t->thread_child->child_elem);
   
 
   /* Prepare thread for first run by initializing its stack.
@@ -297,9 +297,12 @@ void thread_exit(void)
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable();
-  /*Print the information */
+  /* Project4 Process wait */
+  // Print the information 
   printf("%s: exit(%d)\n", thread_name(), thread_current()->exit_status);
 
+  // Save the exit status of the child thread for process_wait
+  thread_current()->thread_child->store_exit = thread_current()->exit_status;
   thread_unblock(thread_current()->parent);
 
   list_remove(&thread_current()->allelem);
@@ -465,15 +468,15 @@ init_thread(struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *)t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
-
+  
+  /* Project 4 Process wait */
   if (t == initial_thread)
     t->parent = NULL;
   /* Record the parent's thread */
   else
     t->parent = thread_current();
 
-  list_init(&t->childs);
-  t->success = false;
+  list_init(&t->children);
   t->exit_status = 1;
 
   list_push_back(&all_list, &t->allelem);

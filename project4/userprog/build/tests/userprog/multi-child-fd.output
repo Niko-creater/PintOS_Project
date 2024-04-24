@@ -26,13 +26,13 @@ Erasing ustar archive...
 Executing 'multi-child-fd':
 (multi-child-fd) begin
 (multi-child-fd) open "sample.txt"
-(multi-child-fd) wait(exec()) = -1073742084
+(multi-child-fd) wait(exec()) = -1073742068
 (multi-child-fd) size of sample.txt (134524150) differs from expected (239)
 (multi-child-fd) read of 239 bytes at offset 0 in "sample.txt" returned 134524150: FAILED
 multi-child-fd: exit(1)
 Execution of 'multi-child-fd' complete.
-Timer: 583 ticks
-Thread: 0 idle ticks, 496 kernel ticks, 91 user ticks
+Timer: 587 ticks
+Thread: 0 idle ticks, 501 kernel ticks, 90 user ticks
 hda2 (filesys): 115 reads, 318 writes
 hda3 (scratch): 154 reads, 2 writes
 Console: 1236 characters output

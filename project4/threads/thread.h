@@ -25,11 +25,14 @@ typedef int tid_t;
 #define PRI_DEFAULT 31 /* Default priority. */
 #define PRI_MAX 63     /* Highest priority. */
 
+/* Project4 Process wait */
+// Child struct
 struct child
 {
-   tid_t tid;                   /* tid of the thread */
-   bool isrun;                  /* whether the child's thread is run successfully */
-   struct list_elem child_elem; /* list of children */
+   tid_t tid;                   // tid of the thread 
+   bool isrun;                  // whether the child's thread is run successfully 
+   struct list_elem child_elem; // list of children 
+   int store_exit;              // the exit status of child thread 
 };
 
 /* A kernel thread or user process.
@@ -109,11 +112,11 @@ struct thread
    /* Owned by thread.c. */
    unsigned magic; /* Detects stack overflow. */
 
-   /* Structure for Task2 */
-   struct list childs;         /* The list of childs */
-   int exit_status;                /* Exit status */
-   bool success;               /* Judge whehter the child's thread execute successfully */
-   struct thread *parent;      /* Parent thread of the thread */
+   /* Project4 Process wait */
+   struct list children;       // The list of children 
+   int exit_status;            // Exit status 
+   struct thread *parent;      // Parent thread of the thread 
+   struct child *thread_child; // Store the child of this thread 
 };
 
 /* If false (default), use round-robin scheduler.

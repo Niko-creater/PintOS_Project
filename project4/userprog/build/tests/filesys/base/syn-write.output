@@ -38,8 +38,8 @@ Executing 'syn-write':
 (syn-write) wait for child 1 of 10 returned -1073742164 (expected 0): FAILED
 syn-write: exit(1)
 Execution of 'syn-write' complete.
-Timer: 644 ticks
-Thread: 0 idle ticks, 470 kernel ticks, 178 user ticks
+Timer: 648 ticks
+Thread: 0 idle ticks, 474 kernel ticks, 177 user ticks
 hda2 (filesys): 90 reads, 324 writes
 hda3 (scratch): 158 reads, 2 writes
 Console: 1592 characters output

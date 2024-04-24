@@ -24,8 +24,8 @@ Executing 'multi-oom':
 (multi-oom) should have forked at least 30 times.: FAILED
 multi-oom: exit(1)
 Execution of 'multi-oom' complete.
-Timer: 423 ticks
-Thread: 0 idle ticks, 366 kernel ticks, 61 user ticks
+Timer: 427 ticks
+Thread: 0 idle ticks, 370 kernel ticks, 61 user ticks
 hda2 (filesys): 72 reads, 174 writes
 hda3 (scratch): 84 reads, 2 writes
 Console: 925 characters output
