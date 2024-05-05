@@ -1,0 +1,49 @@
+Copying tests/userprog/wait-killed to scratch partition...
+Copying tests/userprog/child-bad to scratch partition...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+PiLo hda1
+Loading............
+Kernel command line: -q -f extract run wait-killed
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  102,400 loops/s.
+hda: 5,040 sectors (2 MB), model "BXHD00011", serial "Generic 1234"
+hda1: 205 sectors (102 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 144 sectors (72 kB), Pintos scratch (22)
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'wait-killed' into the file system...
+Putting 'child-bad' into the file system...
+Erasing ustar archive...
+Executing 'wait-killed':
+(wait-killed) begin
+(child-bad) begin
+Page fault at 0x20101234: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002e20a
+ cr2=20101234 error=00000000
+ eax=20101234 ebx=00000000 ecx=00000003 edx=000000ad
+ esi=00000000 edi=00000000 esp=00000020 ebp=c010ff64
+ cs=0008 ds=0010 es=0010 ss=0020
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc002a245 0xc002e00d 0xc002e10b 0xc0021f0c 0xc0022169 0xc002e20a 0xc0021f0c 0xc0022169 0x80480a1 0x80480dd 0x80487d3.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 555 ticks
+Thread: 0 idle ticks, 396 kernel ticks, 159 user ticks
+hda2 (filesys): 122 reads, 294 writes
+hda3 (scratch): 143 reads, 2 writes
+Console: 1579 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off..========================================================================
+                        Bochs x86 Emulator 2.6
+            Built from SVN snapshot on September 2nd, 2012
+                  Compiled on Feb 17 2015 at 16:28:11
+========================================================================
