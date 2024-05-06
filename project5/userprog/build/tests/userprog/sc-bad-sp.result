@@ -1,16 +1,16 @@
 FAIL
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc002a245 0xc002e00d 0xc002e10b 0xc0021f0c 0xc0022169 0xc002e20a 0xc0021f0c 0xc0022169 0x80480a1 0x80480dd 0x80487d3
+Call stack: 0xc002a1fd 0xc002dff5 0xc002e0f3 0xc0021ec4 0xc0022121 0xc002e19f 0xc0021ec4 0xc0022121 0x80480a1 0x80480dd 0x80487d3
 Translation of call stack:
 In kernel.o:
-0xc002a245: debug_panic (.../../lib/kernel/debug.c:38)
-0xc002e00d: kill (.../userprog/exception.c:106)
-0xc002e10b: page_fault (...n.c:160 (discriminator 9))
-0xc0021f0c: intr_handler (..../threads/interrupt.c:367)
-0xc0022169: intr_entry (threads/intr-stubs.S:38)
-0xc002e20a: syscall_handler (.../../userprog/syscall.c:86)
-0xc0021f0c: intr_handler (..../threads/interrupt.c:367)
-0xc0022169: intr_entry (threads/intr-stubs.S:38)
+0xc002a1fd: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002dff5: kill (.../userprog/exception.c:106)
+0xc002e0f3: page_fault (...n.c:160 (discriminator 9))
+0xc0021ec4: intr_handler (..../threads/interrupt.c:367)
+0xc0022121: intr_entry (threads/intr-stubs.S:38)
+0xc002e19f: syscall_handler (.../../userprog/syscall.c:63)
+0xc0021ec4: intr_handler (..../threads/interrupt.c:367)
+0xc0022121: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/sc-bad-sp:
 0x080480a1: test_main (...s/userprog/sc-bad-sp.c:19)
 0x080480dd: main (...ild/../../tests/main.c:13)

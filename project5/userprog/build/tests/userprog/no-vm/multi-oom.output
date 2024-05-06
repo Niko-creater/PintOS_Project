@@ -2765,8 +2765,8 @@ multi-oom: exit(53)
 (multi-oom) end
 multi-oom: exit(53)
 Execution of 'multi-oom' complete.
-Timer: 140256 ticks
-Thread: 0 idle ticks, 49852 kernel ticks, 90408 user ticks
+Timer: 142558 ticks
+Thread: 0 idle ticks, 49794 kernel ticks, 92768 user ticks
 hda2 (filesys): 42372 reads, 174 writes
 hda3 (scratch): 84 reads, 2 writes
 Console: 114642 characters output

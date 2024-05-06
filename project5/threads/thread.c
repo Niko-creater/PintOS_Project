@@ -183,6 +183,7 @@ tid_t thread_create(const char *name, int priority,
   /* Initialize for the thread's child */
   t->thread_child = malloc(sizeof(struct child));
   t->thread_child->tid = tid;
+  /* Project 5 PintOS semaphore */
   sema_init (&t->thread_child->sema, 0);
   list_push_back(&thread_current()->children, &t->thread_child->child_elem);
 
@@ -299,15 +300,6 @@ void thread_exit(void)
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable();
-  /* Project4 Process wait */
-  // Print the information 
-  printf("%s: exit(%d)\n", thread_name(), thread_current()->exit_status);
-
-  // Save the exit status of the child thread for process_wait
-  thread_current()->thread_child->store_exit = thread_current()->exit_status;
-  // // Unblock the parent thread
-  // thread_unblock(thread_current()->parent);
-  sema_up (&thread_current()->thread_child->sema);
 
   list_remove(&thread_current()->allelem);
   thread_current()->status = THREAD_DYING;
@@ -484,8 +476,9 @@ init_thread(struct thread *t, const char *name, int priority)
   list_init(&t->children);
   t->exit_status = UINT32_MAX;
 
+  /* Project 5 PintOS semaphore */
   sema_init (&t->sema, 0);
-  t->success = true;
+  t->success = false;
 
   list_push_back(&all_list, &t->allelem);
 }

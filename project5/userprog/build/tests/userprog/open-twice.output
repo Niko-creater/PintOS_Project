@@ -28,8 +28,8 @@ Executing 'open-twice':
 (open-twice) open() returned 134524124 both times: FAILED
 open-twice: exit(1)
 Execution of 'open-twice' complete.
-Timer: 465 ticks
-Thread: 0 idle ticks, 397 kernel ticks, 71 user ticks
+Timer: 468 ticks
+Thread: 0 idle ticks, 397 kernel ticks, 75 user ticks
 hda2 (filesys): 88 reads, 158 writes
 hda3 (scratch): 75 reads, 2 writes
 Console: 1050 characters output

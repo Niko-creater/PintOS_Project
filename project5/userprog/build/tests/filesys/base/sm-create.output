@@ -27,11 +27,11 @@ Executing 'sm-create':
 (sm-create) read of 512 bytes at offset 0 in "blargle" returned 134524456: FAILED
 sm-create: exit(1)
 Execution of 'sm-create' complete.
-Timer: 459 ticks
-Thread: 0 idle ticks, 366 kernel ticks, 96 user ticks
+Timer: 462 ticks
+Thread: 0 idle ticks, 365 kernel ticks, 100 user ticks
 hda2 (filesys): 63 reads, 156 writes
 hda3 (scratch): 75 reads, 2 writes
-Console: 1092 characters output
+Console: 1093 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

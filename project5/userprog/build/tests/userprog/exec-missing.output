@@ -27,8 +27,8 @@ no-such-file: exit(-1)
 (exec-missing) end
 exec-missing: exit(0)
 Execution of 'exec-missing' complete.
-Timer: 465 ticks
-Thread: 0 idle ticks, 369 kernel ticks, 100 user ticks
+Timer: 470 ticks
+Thread: 0 idle ticks, 369 kernel ticks, 105 user ticks
 hda2 (filesys): 78 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
 Console: 1001 characters output

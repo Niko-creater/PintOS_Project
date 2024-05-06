@@ -49,8 +49,8 @@ Executing 'args-many a b c d e f g h i j k l m n o p q r s t u v':
 (args) end
 args-many: exit(0)
 Execution of 'args-many a b c d e f g h i j k l m n o p q r s t u v' complete.
-Timer: 525 ticks
-Thread: 0 idle ticks, 368 kernel ticks, 161 user ticks
+Timer: 528 ticks
+Thread: 0 idle ticks, 367 kernel ticks, 165 user ticks
 hda2 (filesys): 63 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
 Console: 1553 characters output

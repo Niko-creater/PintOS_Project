@@ -26,6 +26,7 @@ typedef int tid_t;
 #define PRI_MAX 63     /* Highest priority. */
 
 /* Project4 Process wait */
+/* Project5 PintOS semaphore */
 // Child struct
 struct child
 {
@@ -33,6 +34,7 @@ struct child
    bool isrun;                  // whether the child's thread is run successfully 
    struct list_elem child_elem; // list of children 
    int store_exit;              // the exit status of child thread 
+
    struct semaphore sema;       // semaphore to control waiting 
 };
 
@@ -117,7 +119,7 @@ struct thread
    int exit_status;            // Exit status 
    struct thread *parent;      // Parent thread of the thread 
    struct child *thread_child; // Store the child of this thread
-   
+   /* Project5 PintOS semaphore */
    bool success;               // Judge whehter the child's thread execute successfully
    struct semaphore sema;      // Control the child process's logic, finish parent waiting for child 
 };

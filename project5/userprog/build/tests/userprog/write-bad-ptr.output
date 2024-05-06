@@ -25,13 +25,13 @@ Executing 'write-bad-ptr':
 (write-bad-ptr) begin
 (write-bad-ptr) open "sample.txt"
 Page fault at 0x10123420: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002c7a4
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002c75c
  cr2=10123420 error=00000000
  eax=10123420 ebx=00000000 ecx=0000007b edx=10123421
  esi=00000000 edi=00000000 esp=0000000a ebp=c010bf04
  cs=0008 ds=0010 es=0010 ss=bee0
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc002a245 0xc002e00d 0xc002e10b 0xc0021f0c 0xc0022169 0xc002c7a4 0xc002e2d5 0xc002e258 0xc0021f0c 0xc0022169 0x804a95e 0x80480e2 0x804811e 0x8048814.
+Call stack: 0xc002a1fd 0xc002dff5 0xc002e0f3 0xc0021ec4 0xc0022121 0xc002c75c 0xc002e278 0xc002e1ed 0xc0021ec4 0xc0022121 0x804a95e 0x80480e2 0x804811e 0x8048814.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.

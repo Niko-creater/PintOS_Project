@@ -28,8 +28,8 @@ Executing 'rox-child':
 (rox-child) read "child-rox": FAILED
 rox-child: exit(1)
 Execution of 'rox-child' complete.
-Timer: 519 ticks
-Thread: 0 idle ticks, 458 kernel ticks, 65 user ticks
+Timer: 523 ticks
+Thread: 0 idle ticks, 457 kernel ticks, 69 user ticks
 hda2 (filesys): 88 reads, 316 writes
 hda3 (scratch): 154 reads, 2 writes
 Console: 1009 characters output

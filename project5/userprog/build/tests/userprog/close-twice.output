@@ -29,8 +29,8 @@ Executing 'close-twice':
 (close-twice) end
 close-twice: exit(0)
 Execution of 'close-twice' complete.
-Timer: 463 ticks
-Thread: 0 idle ticks, 398 kernel ticks, 69 user ticks
+Timer: 466 ticks
+Thread: 0 idle ticks, 396 kernel ticks, 73 user ticks
 hda2 (filesys): 88 reads, 156 writes
 hda3 (scratch): 74 reads, 2 writes
 Console: 1047 characters output

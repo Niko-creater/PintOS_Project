@@ -26,8 +26,8 @@ Executing 'rox-simple':
 (rox-simple) read "rox-simple": FAILED
 rox-simple: exit(1)
 Execution of 'rox-simple' complete.
-Timer: 420 ticks
-Thread: 0 idle ticks, 357 kernel ticks, 66 user ticks
+Timer: 423 ticks
+Thread: 0 idle ticks, 356 kernel ticks, 70 user ticks
 hda2 (filesys): 63 reads, 152 writes
 hda3 (scratch): 73 reads, 2 writes
 Console: 975 characters output

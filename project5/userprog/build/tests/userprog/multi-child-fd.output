@@ -34,8 +34,8 @@ child-close: exit(0)
 (multi-child-fd) read of 239 bytes at offset 0 in "sample.txt" returned 134524150: FAILED
 multi-child-fd: exit(1)
 Execution of 'multi-child-fd' complete.
-Timer: 705 ticks
-Thread: 0 idle ticks, 548 kernel ticks, 160 user ticks
+Timer: 711 ticks
+Thread: 0 idle ticks, 548 kernel ticks, 166 user ticks
 hda2 (filesys): 158 reads, 318 writes
 hda3 (scratch): 154 reads, 2 writes
 Console: 1287 characters output

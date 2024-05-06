@@ -4,7 +4,7 @@ pass tests/userprog/args-multiple
 pass tests/userprog/args-many
 pass tests/userprog/args-dbl-space
 FAIL tests/userprog/sc-bad-sp
-FAIL tests/userprog/sc-bad-arg
+pass tests/userprog/sc-bad-arg
 pass tests/userprog/sc-boundary
 pass tests/userprog/sc-boundary-2
 pass tests/userprog/halt

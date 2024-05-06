@@ -87,11 +87,14 @@ tid_t process_execute(const char *file_name)
   // enum intr_level old_level = intr_disable();
   // thread_block();
   // intr_set_level(old_level);
+  /* Project5 exec() */
+
   sema_down(&thread_current()->sema);
   if (!thread_current()->success)
   {
     struct child *child_ptr = get_child(tid);
-    if (child_ptr == NULL) return TID_ERROR;
+    if (child_ptr == NULL)
+      return TID_ERROR;
     sema_down(&child_ptr->sema);
     return TID_ERROR;
   }
@@ -169,6 +172,7 @@ start_process(void *file_name_)
     if_.esp -= 4;
     *(int *)if_.esp = 0;
 
+    /* Project5 exec() */
     /* Record the exec_status of the parent thread's success and sema up parent's semaphore */
     thread_current()->parent->success = true;
     sema_up(&thread_current()->parent->sema);
@@ -178,6 +182,7 @@ start_process(void *file_name_)
   free(fn_copy);
   if (!success)
   {
+    /* Project5 exec() */
     thread_current()->parent->success = false;
     sema_up(&thread_current()->parent->sema);
     thread_exit();
@@ -186,6 +191,7 @@ start_process(void *file_name_)
   /* Project4 Process wait */
   // Unblock the parent thread
   // thread_unblock(thread_current()->parent);
+
 
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -209,9 +215,6 @@ start_process(void *file_name_)
 /* Project4 Process wait */
 int process_wait(tid_t child_tid UNUSED)
 {
-  struct list *l = &thread_current()->children;
-  struct list_elem *child_elem_ptr;
-  child_elem_ptr = list_begin(l);
   struct child *child_ptr = get_child(child_tid);
   if (child_ptr == NULL)
   {
@@ -228,9 +231,8 @@ int process_wait(tid_t child_tid UNUSED)
     return -1; // process_wait() has already been successfully called for the given thread
   }
 
-
-  list_remove(child_elem_ptr);  // Remove the child because it's finished.
-  return child_ptr->store_exit; // Return the child thread's exit status
+  list_remove(&child_ptr->child_elem); // Remove the child because it's finished.
+  return child_ptr->store_exit;        // Return the child thread's exit status
 }
 
 /* Free the current process's resources. */
@@ -244,6 +246,9 @@ void process_exit(void)
   pd = cur->pagedir;
   if (pd != NULL)
   {
+    /* Project4 Process wait */
+    // Print the information
+    printf("%s: exit(%d)\n", thread_name(), thread_current()->exit_status);
     /* Correct ordering here is crucial.  We must set
        cur->pagedir to NULL before switching page directories,
        so that a timer interrupt can't switch back to the
@@ -251,10 +256,16 @@ void process_exit(void)
        directory before destroying the process's page
        directory, or our active page directory will be one
        that's been freed (and cleared). */
+
     cur->pagedir = NULL;
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
+
+  /* Project5 Process wait */
+  // Save the exit status of the child thread for process_wait
+  cur->thread_child->store_exit = cur->exit_status;
+  sema_up(&cur->thread_child->sema);
 }
 
 /* Sets up the CPU for running user code in the current

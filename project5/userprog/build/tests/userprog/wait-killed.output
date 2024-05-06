@@ -25,18 +25,18 @@ Executing 'wait-killed':
 (wait-killed) begin
 (child-bad) begin
 Page fault at 0x20101234: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002e20a
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc002e19f
  cr2=20101234 error=00000000
  eax=20101234 ebx=00000000 ecx=00000003 edx=000000ad
  esi=00000000 edi=00000000 esp=00000020 ebp=c010ff64
  cs=0008 ds=0010 es=0010 ss=0020
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc002a245 0xc002e00d 0xc002e10b 0xc0021f0c 0xc0022169 0xc002e20a 0xc0021f0c 0xc0022169 0x80480a1 0x80480dd 0x80487d3.
+Call stack: 0xc002a1fd 0xc002dff5 0xc002e0f3 0xc0021ec4 0xc0022121 0xc002e19f 0xc0021ec4 0xc0022121 0x80480a1 0x80480dd 0x80487d3.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 555 ticks
-Thread: 0 idle ticks, 396 kernel ticks, 159 user ticks
+Timer: 556 ticks
+Thread: 0 idle ticks, 396 kernel ticks, 160 user ticks
 hda2 (filesys): 122 reads, 294 writes
 hda3 (scratch): 143 reads, 2 writes
 Console: 1579 characters output

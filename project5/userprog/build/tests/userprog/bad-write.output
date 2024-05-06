@@ -30,8 +30,8 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804809f
  cs=001b ds=0023 es=0023 ss=0023
 bad-write: exit(-1)
 Execution of 'bad-write' complete.
-Timer: 461 ticks
-Thread: 0 idle ticks, 356 kernel ticks, 109 user ticks
+Timer: 462 ticks
+Thread: 0 idle ticks, 354 kernel ticks, 112 user ticks
 hda2 (filesys): 61 reads, 150 writes
 hda3 (scratch): 72 reads, 2 writes
 Console: 1229 characters output
