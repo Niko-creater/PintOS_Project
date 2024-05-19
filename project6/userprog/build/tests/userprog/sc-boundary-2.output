@@ -1,0 +1,38 @@
+Copying tests/userprog/sc-boundary-2 to scratch partition...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+PiLo hda1
+Loading............
+Kernel command line: -q -f extract run sc-boundary-2
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  102,400 loops/s.
+hda: 5,040 sectors (2 MB), model "BXHD00011", serial "Generic 1234"
+hda1: 206 sectors (103 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 76 sectors (38 kB), Pintos scratch (22)
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'sc-boundary-2' into the file system...
+Erasing ustar archive...
+Executing 'sc-boundary-2':
+(sc-boundary-2) begin
+sc-boundary-2: exit(67)
+Execution of 'sc-boundary-2' complete.
+Timer: 424 ticks
+Thread: 0 idle ticks, 366 kernel ticks, 62 user ticks
+hda2 (filesys): 63 reads, 156 writes
+hda3 (scratch): 75 reads, 2 writes
+Console: 893 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+========================================================================
+                        Bochs x86 Emulator 2.6
+            Built from SVN snapshot on September 2nd, 2012
+                  Compiled on Feb 17 2015 at 16:28:11
+========================================================================
